@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>list页面</title>
+</head>
+<body bgcolor="#ffa243">
+ <table bgcolor="#bcc8ff" width="100%" >
+     <tr>
+         <th>ID</th>
+         <th>Name</th>
+     </tr>
+     <tr th:each="city:${list}" align="center">
+          <td th:text="${city.id}"></td>
+         <td th:text="${city.name}"></td>
+     </tr>
+
+ </table>
+</body>
+</html>
