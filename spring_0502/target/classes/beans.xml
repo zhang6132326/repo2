@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+          http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 1 通过对象的默认构造函数 默认的构造不能覆盖。
+            只要加载到beans.xml配置文件时候，就会自动创建bean的对象，调用默认的构造函数
+
+    <bean id="userService" class="com.zxf.service.impl.UserServiceImpl"/>
+    <bean id="userdao" class="com.zxf.dao.impl.UserDaoImpl" />
+  -->
+    <!--2  通过配置工厂方式创建bean对象userdao
+       这种方法方法的类型不可以是static factory-method="getUserDaoImpl"
+       只要加载到beans.xml配置文件时候，就会自动创建bean的对象
+
+
+    <bean id="myfactoy" class="com.zxf.factory.MyFactory"/>
+    <bean id="getuserdao"  factory-bean="myfactoy" factory-method="getUserDaoImpl"/>
+  -->
+    <!--3  通过配置静态工厂创建userdao对象
+    这种方式方法必须是static的 factory-method="getUserDaoImpl"
+      因为方法是static的所以只要加载了beans.xml配置文件就会自动调用 getUserDaoImpl方法去创建对象一次   -->
+    <bean id="getuserdao2" class="com.zxf.factory.MyFactory" factory-method="getUserDaoImpl"/>
+
+
+
+</beans>
